@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .button {
+            border-radius: 8px;
+            border: 5px solid greenyellow;
+            font-size: 24px;
+            color: blueviolet;
+            background-color: aqua;
+            line-height: 58px;
+        }
+    </style>
+</head>
+<body>
+        <div id="root"></div>
+</body>
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin ></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin ></script> 
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<script type="text/babel">
+
+    const Component = ({tittle, href, onClick}) => {
+        let Compe = 'button'
+        const props = {}
+
+        if (href) {
+            Compe = 'a'
+            props.href = href
+        }
+
+        if (onClick) {
+            props.onClick = onClick
+        }
+
+        return(
+            <Compe className = 'button' {...props}>
+                {tittle}
+            </Compe>
+        )
+    }
+
+    function App() {
+        return(  
+            <div className = 'warpper'>
+                <Component
+                    tittle = 'Ngon nhan di'
+                    // href = 'https://nhoc20170861.github.io/code-hearth/'
+                    onClick = {() => alert(Math.random())}
+                />
+            </div>
+        )
+    }
+
+    const domContainer = document.querySelector('#root');
+    const root = ReactDOM.createRoot(domContainer);
+    root.render(<App/>);
+</script>
+</html>
